@@ -1,9 +1,6 @@
 import numpy as np
 import cv2
 import os
-
-
-
 from cvzone.HandTrackingModule import HandDetector
 
 # Parameters
@@ -33,7 +30,7 @@ annotation_number = -1
 annotation_start = False
 
 # Hand_Detector
-# Here, detectionCon = the code will run if it is 80% of the oblect being a hand.
+# Here, detectionCon = the code will run if it is 80% of the object being a hand.
 detector = HandDetector(detectionCon=0.8, maxHands=1)
 
 while True:
