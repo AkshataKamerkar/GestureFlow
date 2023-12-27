@@ -5,7 +5,7 @@ from cvzone.HandTrackingModule import HandDetector
 
 # Parameters
 width, height = 1280, 720
-FolderPath = 'ppt'
+FolderPath = 'ppt'                  # Directory in which Presentation Slides are kept
 hs, ws = 120, 213
 
 # Cam_Setup
@@ -14,7 +14,7 @@ cam = cv2.VideoCapture(0)
 cam.set(3, ws)
 cam.set(4, hs)
 
-# Presentation_Slides
+# Presentation_Slides -> Getting the list of the slide names and sorting them according to their length [ length of the slide name ]
 # sorted_fuction
 pathSlides = sorted(os.listdir(FolderPath), key=len)
 # print(pathSlides)
@@ -30,7 +30,7 @@ annotation_number = -1
 annotation_start = False
 
 # Hand_Detector
-# Here, detectionCon = the code will run if it is 80% of the object being a hand.
+# Here, detectionCon = the code will run if it is 80% of the oblect being a hand.
 detector = HandDetector(detectionCon=0.8, maxHands=1)
 
 while True:
@@ -39,6 +39,7 @@ while True:
     img = cv2.flip(img, 1)
     img = cv2.line(img, (0, gestureThreshold), (width, gestureThreshold), (100, 255, 205), 10)
 
+    # Here FolderPath is the Project Directory
     pathFullSlides = os.path.join(FolderPath, pathSlides[SlideNum])
     SlideCurrent = cv2.imread(pathFullSlides)
 
@@ -107,10 +108,6 @@ while True:
 
         # Gesture - 6
         #if fingers == [1,1,1,1,0]:
-
-
-
-
 
 
     # Button_Pressed itreation
